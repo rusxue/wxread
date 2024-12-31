@@ -82,5 +82,8 @@ def push(content, method):
         bot_token = TELEGRAM_BOT_TOKEN
         chat_id = TELEGRAM_CHAT_ID
         return notifier.push_telegram(content, bot_token, chat_id)
+    elif method == "wx":
+        token = PUSHPLUS_TOKEN
+        requests.get(f'https://wxpusher.zjiecode.com/api/send/message/{token}/{content}')
     else:
         raise ValueError("❌ 无效的通知渠道，请选择 'pushplus' 或 'telegram'")
